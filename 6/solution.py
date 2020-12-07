@@ -12,9 +12,9 @@ def part1():
 def part2():
     count = 0
     for group in groups:
-        intersection = set(list(string.ascii_lowercase))
+        intersection = set(string.ascii_lowercase)
         for person in group.split("\n"):
-            intersection = intersection & set(list(person))
+            intersection = intersection & set(person)
         count += len(intersection)
     return count
 
