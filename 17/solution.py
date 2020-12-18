@@ -24,7 +24,11 @@ def surrounding_4d(cubes, coord):
             for z in [cz-1, cz, cz+1]:
                 for w in [cw-1, cw, cw+1]: 
                     if (x,y,z,w) == coord: continue
-                    elif (x,y,z,w) in cubes: count += 1
+                    elif (x,y,z,w) in cubes:
+                        count += 1
+                        if count > 3:
+                            return
+                    
     return count
 
 def print_board_3d(cubes):
