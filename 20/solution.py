@@ -107,6 +107,7 @@ def find_snakes(image):
                 ]
 
     count = 0
+    emoji_image = copy.deepcopy(image)
 
     for y in range(len(image) - len(snake_template) + 1):
         for x in range(len(image[0])  - len(snake_template[0]) + 1):
@@ -118,6 +119,19 @@ def find_snakes(image):
                             is_snake = False
             if is_snake:
                 count += 1
+                for snake_y in range(len(snake_template)):
+                    for snake_x in range(len(snake_template[0])):
+                        if snake_template[snake_y][snake_x] == "#":
+                            emoji_image[y + snake_y][x+snake_x] = '🟩'
+
+    if count > 0:
+        for y in range(len(image)):
+            for x in range(len(image[0])):
+                if emoji_image[y][x] == '#': emoji_image[y][x] = '⬜'
+                elif emoji_image[y][x] == '.': emoji_image[y][x] = '🟦'
+
+        # for row in emoji_image:
+        #     print("".join(row))
 
     return count
 
